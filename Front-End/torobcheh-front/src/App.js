@@ -15,7 +15,8 @@ function App() {
     <div className="App">
       {/* <MainPage /> */}
       {/* <LoginPage /> */}
-      <ProductBriefCard_container id={'ProductsPage_ProductBriefCard_container'} />
+      {/* <ProductBriefCard_container id={'ProductsPage_ProductBriefCard_container'} /> */}
+      
     </div>
   );
 }
