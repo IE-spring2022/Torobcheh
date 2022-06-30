@@ -1,0 +1,14 @@
+.ProductBriefCard_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    /* background-color: red; */
+
+    padding: 15px;
+}
+
+#ProductsPage_ProductBriefCard_container{
+    
+}
