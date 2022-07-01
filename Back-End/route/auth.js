@@ -15,8 +15,25 @@ function calc_payload(user) {
     return {username: user.username}; //previously userId: user.id
 }
 
+function checkPassword(password){
+    if(password.length < 8)
+        return "password must be at least 8 characters"
+    else if(password.toUpperCase() === password)
+        return "password must contain lowercase letters"
+    else if(password.toLowerCase() === password)
+        return "password must contain uppercase letters"
+    else if(!(/\d/.test(password)))
+        return "password must contain digits"
+    else
+        return "" // this means the password acceptable
+}
+
 app.post( "/api/auth/signup/user", async (req, res) => {
         const { username, password, email, phone } = req.body;
+        let passCheck = checkPassword(password)
+        if(passCheck !== "")
+            return bad_request(res, passCheck)
+
         try {
             let user = await User.findOne({ username : username });
             if (user) { return bad_request(res, "user name is already taken!");}
@@ -42,6 +59,10 @@ app.post( "/api/auth/signup/user", async (req, res) => {
 
 app.post( "/api/auth/signup/seller", async (req, res) => {
         const { username, password, email, phone} = req.body;
+        let passCheck = checkPassword(password)
+        if(passCheck !== "")
+            return bad_request(res, passCheck)
+
         try {
             let seller = await Seller.findOne({ username : username });
             if (seller) { return bad_request(res, "username is already taken!");}
