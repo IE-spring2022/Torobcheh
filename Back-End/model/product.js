@@ -18,9 +18,10 @@ const productSchema = new Schema({
         type: Number,
         required: true,
     },
-    attributes:  [
-        { type: Schema.Types.ObjectId, ref: "Attribute" }
-    ],
+    attributes:{
+        // { type: Schema.Types.ObjectId, ref: "Attribute" }
+        type : String //todo stringified JSON {"attr1": "val1", "attr2": "val2"}
+    },
     date_added: {
         type: Date,
         required: true,
