@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
-import ProductBriefCard_container from './ProductBriefCard_container';
+import ProductBriefCardContainer from './ProductBriefCardContainer';
 import DropDownBrands from './DropDownBrands';
 
 
@@ -16,7 +16,7 @@ function ProductsListPage(props) {
         <div className="ProductsListPage_container">
             <Header />
             <div className='ProductsListPage_partition'>
-                <ProductBriefCard_container />
+                <ProductBriefCardContainer />
                 <div className='ProductsListPage_filters_div'>
                     <DropDownBrands category={'گوشی موبایل'} brands_list={mobile_brands} />
                     <DropDownBrands category={'تبلت'} brands_list={tablet_brands} />

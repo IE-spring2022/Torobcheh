@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductBriefCard from './ProductBriefCard';
 
-class ProductBriefCard_container extends React.Component {
+class ProductBriefCardContainer extends React.Component {
 
     render() {
 
@@ -37,4 +37,4 @@ class ProductBriefCard_container extends React.Component {
         );
     };
 }
-export default ProductBriefCard_container;
+export default ProductBriefCardContainer;

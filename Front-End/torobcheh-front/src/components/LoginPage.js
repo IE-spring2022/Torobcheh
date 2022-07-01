@@ -1,15 +1,15 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
-import { login, logout } from "../redux/UserInfo";
-import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { login, logout } from "../redux/UserInfo";
+// import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { send_request } from '../send_request';
 
 
 function LoginPage(props) {
 
-    const my_dispatch = useDispatch();
-    const user_info = useSelector((state) => state.UserInfo);
+    // const my_dispatch = useDispatch();
+    // const user_info = useSelector((state) => state.UserInfo);
 
     return (
         <div className="LoginPage_container">

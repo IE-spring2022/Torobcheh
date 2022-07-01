@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 
 function MainPage(props) {
