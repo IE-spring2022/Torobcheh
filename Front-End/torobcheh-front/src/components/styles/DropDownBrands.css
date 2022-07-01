@@ -4,6 +4,8 @@
     direction: rtl;
 
     background-color: rgb(243, 242, 242);
+
+    padding: 5px;
 }
 .DropDownBrand_container ul{
     list-style: none
