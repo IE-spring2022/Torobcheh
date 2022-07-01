@@ -18,10 +18,10 @@ import './components/styles/price_filter_slider.css'
 function App() {
   return (
     <div className="App">
-      {/* <MainPage /> */}
+      <MainPage />
       {/* <LoginPage /> */}
       {/* <ProductBriefCard_container id={'ProductsPage_ProductBriefCard_container'} /> */}
-      <ProductsListPage />
+      {/* <ProductsListPage /> */}
     </div>
   );
 }
