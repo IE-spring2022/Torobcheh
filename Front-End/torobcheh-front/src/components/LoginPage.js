@@ -1,6 +1,14 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { login, logout } from "../redux/UserInfo";
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+
 
 function LoginPage(props) {
+
+    const my_dispatch = useDispatch();
+    const user_info = useSelector((state) => state.UserInfo);
 
     return (
         <div className="LoginPage_container">
@@ -34,10 +42,17 @@ function LoginPage(props) {
                         <input type={'password'} placeholder={'رمز عبور'} />
                     </div>
                     <div className='loginpage_button_div'>
-                        <button id='login_button'> ورود </button>
+                        <button 
+                            onClick={() => { my_dispatch(login({token: "abc", user_type: "seller"})); }} 
+                            id='login_button'> 
+                            ورود 
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <Link to={'/'}>بازگشت به صفحه اصلی</Link>
+
         </div>
     );
 

@@ -5,13 +5,16 @@ export const UserInfo = createSlice({
     initialState: { token: null, user_type: null },
     reducers: {
         login: (state = {}, action) => {
-            const changedVal = state;
-            changedVal.token = action.payload.token;
-            changedVal.user_type = action.payload.user_type;
-            return { ...state, changedVal };
+            return {
+                token : action.payload.token,
+                user_type : action.payload.user_type
+            }
         },
         logout: (state = {}) => {
-            //TODO
+            return {
+                token : null,
+                user_type : null
+            }
         }
     },
 });
