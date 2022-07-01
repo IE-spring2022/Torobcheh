@@ -22,6 +22,18 @@ function AddProduct(props) {
         <div className="AddProduct_container">
              <div className='title_in_prof'>
                 اضافه کردن کالا
+                <hr></hr>
+             </div>
+             <div>
+                <form>
+                    <input type={'text'} placeholder={'نام کالا'} />
+                    <select>
+                        <option value={""} selected disabled>دسته بندی</option>
+                        <option value={"phone"}>گوشی موبایل</option>
+                        <option value={"tablet"}>تبلت</option>
+                        <option value={"laptop"}>لپتاپ</option>
+                    </select>
+                </form>
              </div>
              <div className='sub_title_in_prof'>
                 کالاهای موجود

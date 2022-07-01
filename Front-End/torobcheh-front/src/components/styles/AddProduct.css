@@ -5,7 +5,7 @@
     align-items: center;
 }
 .AddProduct_container div{
-    border: 1px solid;
+    /* border: 1px solid; */
 }
 .title_in_prof{
     font-weight: 700;
@@ -39,7 +39,7 @@
 }
 .atr_container{
     max-width: 600px;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
