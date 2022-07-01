@@ -66,4 +66,3 @@ app.put( "/api/products/add_favorite", async (req, res) => {
 );
 
 module.exports = app;
-//todo commite add to favorites + reports
