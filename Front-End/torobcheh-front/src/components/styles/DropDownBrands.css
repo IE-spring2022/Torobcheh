@@ -1,0 +1,10 @@
+.DropDownBrand_container{
+    /* display: inline-block; */
+    width: 150px;
+    direction: rtl;
+
+    background-color: blue;
+}
+.DropDownBrand_container ul{
+    list-style: none
+}
