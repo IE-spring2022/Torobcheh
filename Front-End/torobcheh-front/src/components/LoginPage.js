@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { login, logout } from "../redux/UserInfo";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import { send_request } from '../send_request';
 
 
 function LoginPage(props) {
@@ -43,7 +44,8 @@ function LoginPage(props) {
                     </div>
                     <div className='loginpage_button_div'>
                         <button 
-                            onClick={() => { my_dispatch(login({token: "abc", user_type: "seller"})); }} 
+                            // onClick={() => { my_dispatch(login({token: "abc", user_type: "seller"})); }} 
+                            onClick={send_request("POST", 'auth/login/seller', 'username=user1&password=pass1')}
                             id='login_button'> 
                             ورود 
                         </button>
