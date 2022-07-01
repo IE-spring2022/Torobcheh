@@ -2,19 +2,14 @@ import React from 'react';
 
 function DropDownBrands(props) {
 
-    let mobile_brands = ['سامسونگ', 'شیائومی', 'اپل'];
-    let tablet_brands = ['سامسونگ', 'شیائومی', 'اپل'];
-    let laptop_brands = ['لنوو', 'ایسوس', 'اپل'];
-
-    let category = 'گوشی موبایل';
     let brands = []
-    for (var i = 0; i < mobile_brands.length; i++) {
-        brands.push(<li key={i} >{mobile_brands[i]}</li>);
+    for (var i = 0; i < props.brands_list.length; i++) {
+        brands.push(<li key={i} >{props.brands_list[i]}</li>);
     }
 
     return (
         <div className='DropDownBrand_container'>
-            <div>{category}</div>
+            <div>{props.category}</div>
             <ul>
                 {brands}
             </ul>

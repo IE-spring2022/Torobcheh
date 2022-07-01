@@ -3,6 +3,7 @@ import LoginPage from './components/LoginPage';
 import ProductBriefCard from './components/ProductBriefCard';
 import ProductBriefCard_container from './components/ProductBriefCard_container';
 import ProductsListPage from './components/ProductsListPage';
+import DropDownBrands from './components/DropDownBrands';
 
 import './index.css'
 import './components/styles/Header.css'
@@ -11,14 +12,16 @@ import './components/styles/LoginPage.css'
 import './components/styles/ProductBriefCard.css'
 import './components/styles/ProductBriefCard_container.css'
 import './components/styles/ProductsListPage.css'
+import './components/styles/ProductsListPage.css'
+import './components/styles/DropDownBrands.css'
 
 function App() {
   return (
     <div className="App">
-      {/* <MainPage /> */}
+      <MainPage />
       {/* <LoginPage /> */}
       {/* <ProductBriefCard_container id={'ProductsPage_ProductBriefCard_container'} /> */}
-      <ProductsListPage />
+      {/* <ProductsListPage /> */}
     </div>
   );
 }

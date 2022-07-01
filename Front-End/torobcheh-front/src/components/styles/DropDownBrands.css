@@ -3,8 +3,31 @@
     width: 150px;
     direction: rtl;
 
-    background-color: blue;
+    background-color: rgb(243, 242, 242);
 }
 .DropDownBrand_container ul{
     list-style: none
+}
+
+/* ---- the DropDownBrands inside the header: */
+.category_button_div .DropDownBrand_container{
+    display: none;
+    
+    /* ---overriding unwanted inheritance: */
+    text-align: right;
+
+    position: absolute;
+    right: 30px;
+    top: 50px;
+}
+
+#tablet_button .DropDownBrand_container{
+    right: 140px;
+}
+#laptop_button .DropDownBrand_container{
+    right: 190px;
+}
+
+.category_button_div:hover .DropDownBrand_container, .DropDownBrand_container:hover{
+    display: block;
 }

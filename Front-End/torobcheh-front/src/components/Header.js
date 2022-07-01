@@ -1,6 +1,15 @@
 import React from 'react';
+import DropDownBrands from './DropDownBrands';
 
 function Header(props) {
+
+    // TODO
+    let mobile_brands_list = ['سامسونگ', 'شیائومی', 'اپل'];
+    let mobile_category = 'گوشی موبایل';
+    let tablet_brands_list = ['سامسونگ', 'شیائومی', 'اپل'];
+    let tablet_category = 'تبلت';
+    let laptop_brands_list = ['لنوو', 'ایسوس', 'اپل'];
+    let laptop_category = 'لپتاپ';
 
     return (
         <div className='Header_container'>
@@ -9,9 +18,18 @@ function Header(props) {
             </div>
 
             <div className='category_container'>  
-                <div className='category_button_div'> گوشی موبایل </div>
-                <div className='category_button_div'> تبلت </div>
-                <div className='category_button_div'> لپتاپ </div>
+                <div className='category_button_div'> 
+                    {mobile_category}
+                    <DropDownBrands brands_list={mobile_brands_list} />
+                </div>
+                <div className='category_button_div' id='tablet_button'> 
+                    {tablet_category} 
+                    <DropDownBrands brands_list={tablet_brands_list} />
+                </div>
+                <div className='category_button_div' id='laptop_button'> 
+                    {laptop_category}
+                    <DropDownBrands brands_list={laptop_brands_list} />
+                </div>
             </div>
         </div>
     );
