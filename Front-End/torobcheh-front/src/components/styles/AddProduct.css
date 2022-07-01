@@ -1,0 +1,46 @@
+.AddProduct_container{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.AddProduct_container div{
+    border: 1px solid;
+}
+.title_in_prof{
+    font-weight: 700;
+    direction: rtl;
+    margin: 10px;
+    text-align: center;
+}
+.sub_title_in_prof{
+    font-weight: 500;
+    direction: rtl;
+    margin: 5px;
+    text-align: center;
+}
+
+.AddProduct_container .ProductBriefCard_container{
+    width: 600px;
+    height: 350px;
+    overflow-y: scroll;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    border: 1px solid;
+}
+.atr_show_div{
+    border-radius: 5px;
+    border: 1px solid;
+    display: inline-block;
+    margin: 1px;
+}
+.atr_container{
+    max-width: 600px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
