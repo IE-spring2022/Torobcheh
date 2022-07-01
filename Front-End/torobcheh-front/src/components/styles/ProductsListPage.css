@@ -1,0 +1,5 @@
+/* ---- the "ProductBriefCard_container" inside the ProductsListPage: */
+.ProductsListPage_container .ProductBriefCard_container{
+    /* background-color: red; */
+    width:75%;
+}
