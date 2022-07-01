@@ -23,8 +23,8 @@ function LoginPage(props) {
                         <input type={'email'} placeholder={'ایمیل'} />
                         <input type={'password'} placeholder={'رمز عبور'} />
                         <input type={'number'} placeholder={'شماره موبایل'} />
-                        <select defaultValue={'ثبت نام به عنوان'}>
-                            {/* <option value="" disabled selected> ثبت نام به عنوان </option> */}
+                        <select>
+                            <option value="" disabled selected> ثبت نام به عنوان </option>
                             <option value="buyer">خریدار</option>
                             <option value="seller">فروشنده</option>
                         </select>
@@ -45,7 +45,7 @@ function LoginPage(props) {
                     <div className='loginpage_button_div'>
                         <button 
                             // onClick={() => { my_dispatch(login({token: "abc", user_type: "seller"})); }} 
-                            onClick={send_request("POST", 'auth/login/seller', 'username=user1&password=pass1')}
+                            onClick={() => send_request("POST", 'auth/login/seller', 'username=user1&password=pass1')}
                             id='login_button'> 
                             ورود 
                         </button>
