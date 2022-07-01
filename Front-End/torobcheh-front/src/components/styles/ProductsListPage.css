@@ -1,5 +1,9 @@
-/* ---- the "ProductBriefCard_container" inside the ProductsListPage: */
-.ProductsListPage_container .ProductBriefCard_container{
-    /* background-color: red; */
-    width:75%;
+.ProductsListPage_partition{
+    display: flex;
+    /* border: 1px solid; */
 }
+
+/* ---- the "ProductBriefCard_container" inside the ProductsListPage: */
+/* .ProductsListPage_container .ProductBriefCard_container{
+    
+} */

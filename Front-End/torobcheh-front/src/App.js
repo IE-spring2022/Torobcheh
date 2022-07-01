@@ -12,16 +12,16 @@ import './components/styles/LoginPage.css'
 import './components/styles/ProductBriefCard.css'
 import './components/styles/ProductBriefCard_container.css'
 import './components/styles/ProductsListPage.css'
-import './components/styles/ProductsListPage.css'
 import './components/styles/DropDownBrands.css'
+import './components/styles/price_filter_slider.css'
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      {/* <MainPage /> */}
       {/* <LoginPage /> */}
       {/* <ProductBriefCard_container id={'ProductsPage_ProductBriefCard_container'} /> */}
-      {/* <ProductsListPage /> */}
+      <ProductsListPage />
     </div>
   );
 }
