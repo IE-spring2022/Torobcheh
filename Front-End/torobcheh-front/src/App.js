@@ -1,11 +1,9 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import MainPage from './components/MainPage';
 import LoginPage from './components/LoginPage';
-import ProductBriefCard from './components/ProductBriefCard';
-import ProductBriefCard_container from './components/ProductBriefCard_container';
 import ProductsListPage from './components/ProductsListPage';
-import DropDownBrands from './components/DropDownBrands';
 
 import './index.css'
 import './components/styles/Header.css'
