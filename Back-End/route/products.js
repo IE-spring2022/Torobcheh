@@ -1,11 +1,11 @@
 const moment = require('moment');
 const express = require("express");
 const Product = require("../model/product");
+const User = require("../model/user");
 const Shop = require("../model/shop");
 const app = express();
 const verifyToken = require("../helper/authJWT");
 const bad_request = require("../helper/bad_request");
-
 
 //todo verify token faghat bara favorite gereftane dige!
 
@@ -45,5 +45,25 @@ app.post( "/api/products", async (req, res) => {
     }
 );
 
+app.put( "/api/products/add_favorite", async (req, res) => {
+        const { username, product } = req.body; // gets the shop name for shop
+        try {
+            //todo user.favorites.push(product)
+
+            let user = await User.findOne({ username : username });
+            if (!user) { return bad_request(res, "username does not exist!");}
+
+            user.favorites.push(product); //todo check this!
+
+            await user.save();
+            res.status(200).json({user, message: "favorite successfully added"} );
+
+        } catch (err) {
+            console.log(err.message);
+            res.status(400).send("Error in Saving");
+        }
+    }
+);
 
 module.exports = app;
+//todo commite add to favorites + reports

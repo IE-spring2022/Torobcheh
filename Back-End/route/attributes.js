@@ -1,5 +1,3 @@
-// todo commit attributes + admin logic + init database
-
 const moment = require('moment');
 const express = require("express");
 const Product = require("../model/product");
