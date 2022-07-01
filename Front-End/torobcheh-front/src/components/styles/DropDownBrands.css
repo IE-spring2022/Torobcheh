@@ -7,10 +7,14 @@
 
     padding: 5px;
 
+    font-weight: 400;
     /* background-color: red; */
 }
 .DropDownBrand_container ul{
-    list-style: none
+    list-style: none    
+}
+.DropDownBrand_container li:hover{
+    font-weight: 600;
 }
 
 /* ---- the DropDownBrands inside the header: */

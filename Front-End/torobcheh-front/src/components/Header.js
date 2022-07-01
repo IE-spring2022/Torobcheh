@@ -1,5 +1,6 @@
 import React from 'react';
 import DropDownBrands from './DropDownBrands';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
 
@@ -14,20 +15,20 @@ function Header(props) {
     return (
         <div className='Header_container'>
             <div className='login_signup_button_div'>
-                ورود / ثبت نام
+                <Link style={{ all: "unset", cursor: "pointer" }} to={`/login`}> ورود / ثبت نام </Link>
             </div>
 
             <div className='category_container'>  
                 <div className='category_button_div'> 
-                    {mobile_category}
+                    <Link style={{ all: "unset", cursor: "pointer" }} to={`/products`}> {mobile_category} </Link>
                     <DropDownBrands brands_list={mobile_brands_list} />
                 </div>
                 <div className='category_button_div' id='tablet_button'> 
-                    {tablet_category} 
+                    <Link style={{ all: "unset", cursor: "pointer" }} to={`/products`}> {tablet_category} </Link>
                     <DropDownBrands brands_list={tablet_brands_list} />
                 </div>
                 <div className='category_button_div' id='laptop_button'> 
-                    {laptop_category}
+                    <Link style={{ all: "unset", cursor: "pointer" }} to={`/products`}> {laptop_category} </Link>
                     <DropDownBrands brands_list={laptop_brands_list} />
                 </div>
             </div>

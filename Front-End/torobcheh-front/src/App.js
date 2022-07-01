@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import MainPage from './components/MainPage';
 import LoginPage from './components/LoginPage';
 import ProductBriefCard from './components/ProductBriefCard';
@@ -18,10 +20,13 @@ import './components/styles/price_filter_slider.css'
 function App() {
   return (
     <div className="App">
-      <MainPage />
-      {/* <LoginPage /> */}
-      {/* <ProductBriefCard_container id={'ProductsPage_ProductBriefCard_container'} /> */}
-      {/* <ProductsListPage /> */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/products" element={<ProductsListPage />} />          
+        </Routes>
+      </Router>
     </div>
   );
 }

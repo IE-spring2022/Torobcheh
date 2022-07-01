@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function DropDownBrands(props) {
 
@@ -10,9 +11,11 @@ function DropDownBrands(props) {
     return (
         <div className='DropDownBrand_container'>
             <div>{props.category}</div>
-            <ul>
-                {brands}
-            </ul>
+            <Link style={{ all: "unset", cursor: "pointer" }} to={`/products`}>  
+                <ul>
+                    {brands}
+                </ul>
+            </Link>
         </div>
     );
 
