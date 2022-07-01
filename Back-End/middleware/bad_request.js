@@ -1,4 +1,4 @@
-function bad_request(res, message = "Bad request!") {
+function bad_request(res, message) {
     return res.status(400).json({error: {message: message}});
 }
 

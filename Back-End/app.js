@@ -6,7 +6,7 @@ const config = require("./config/config");
 const app = express();
 app.use(express.json());
 
-// app.use(require("./route/users"));
+app.use(require("./route/auth"));
 
 const db = mongoose.connection;
 mongoose.connect( config.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true} );
