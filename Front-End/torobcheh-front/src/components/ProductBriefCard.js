@@ -7,7 +7,7 @@ function ProductBriefCard(props) {
     return (
         <div className='ProductBriefCard'>
             <div className='ProductBriefCard_img_div'>
-                <img src={props.img} alt={"cannot load image"} />
+                <img src={props.img} alt={"cannot load"} />
             </div>
             <div className='ProductBriefCard_title_div'>
                 نام کالا
@@ -25,7 +25,7 @@ function ProductBriefCard(props) {
     return (
         <div className='ProductBriefCard'>
             <div className='ProductBriefCard_img_div'>
-                <img src={props.img} alt={"cannot load image"} />
+                <img src={props.img} alt={"cannot load"} />
             </div>
             <div className='ProductBriefCard_title_div'>
                 نام کالا

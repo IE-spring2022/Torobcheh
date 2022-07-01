@@ -23,8 +23,8 @@ function LoginPage(props) {
                         <input type={'email'} placeholder={'ایمیل'} />
                         <input type={'password'} placeholder={'رمز عبور'} />
                         <input type={'number'} placeholder={'شماره موبایل'} />
-                        <select>
-                            <option value="" disabled selected> ثبت نام به عنوان </option>
+                        <select defaultValue={'ثبت نام به عنوان'}>
+                            {/* <option value="" disabled selected> ثبت نام به عنوان </option> */}
                             <option value="buyer">خریدار</option>
                             <option value="seller">فروشنده</option>
                         </select>
