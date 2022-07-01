@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../model/user");
 const Seller = require("../model/seller");
+const Admin = require("../model/admin");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -15,21 +16,21 @@ function calc_payload(user) {
 }
 
 app.post( "/api/auth/signup/user", async (req, res) => {
-        const { username, password, email } = req.body;
+        const { username, password, email, phone } = req.body;
         try {
             let user = await User.findOne({ username : username });
             if (user) { return bad_request(res, "user name is already taken!");}
             user = await User.findOne({ email : email });
             if (user) { return bad_request(res, "email belongs to a user!");}
 
-            user = new User({ username: username, password: password, email: email, favorites: [] });
+            user = new User({ username: username, password: password, email: email, phone: phone, favorites: [] });
             const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(password, salt); //todo bonus hashing the pwds!
+            user.password = await bcrypt.hash(password, salt);
             await user.save();
             const payload = calc_payload(user);
             jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                     if (err) throw err;
-                res.status(200).json({token, message: "successful signup"});
+                res.status(200).json({token, message: "successful signup", user_type: "user"});
                 }
             );
         } catch (err) {
@@ -54,7 +55,7 @@ app.post( "/api/auth/signup/seller", async (req, res) => {
             const payload = calc_payload(seller);
             jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                     if (err) throw err;
-                    res.status(200).json({token, message: "successful signup"});
+                    res.status(200).json({token, message: "successful signup", user_type: "seller"});
                 }
             );
         } catch (err) {
@@ -82,7 +83,7 @@ app.post("/api/auth/login/user",async (req, res) => {//todo remove the verify to
         const payload = calc_payload(user);
         jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
             if (err) throw err;
-                res.status(200).json({token, message: "successful"});
+                res.status(200).json({token, message: "successful", user_type: "user"});
         }
         );
       } catch (e) {
@@ -99,14 +100,38 @@ app.post("/api/auth/login/seller",async (req, res) => {//todo remove the verify 
         if (!seller)
             return bad_request(res, "user does not exist!");
 
-        const isMatch = await bcrypt.compare(password, seller.password); //todo bonus password encryption!
+        const isMatch = await bcrypt.compare(password, seller.password); //todo bonus password hashing and encryption!
         if (!isMatch)
             return bad_request(res, "wrong password!");
 
         const payload = calc_payload(seller);
         jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                 if (err) throw err;
-                res.status(200).json({token, message: "successful"});
+                res.status(200).json({token, message: "successful", user_type: "seller"});
+            }
+        );
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+
+app.post("/api/auth/login/admin",async (req, res) => {//todo remove the verify token from here!
+    const { username, password } = req.body;
+    try {
+        let admin = await Admin.findOne({ username: username });
+        if (!admin)
+            return bad_request(res, "you are not the admin!");
+
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch)
+            return bad_request(res, "wrong password!");
+
+        const payload = calc_payload(admin);
+        jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
+                if (err) throw err;
+                res.status(200).json({token, message: "successful", user_type: "admin"});
             }
         );
     } catch (e) {

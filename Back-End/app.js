@@ -8,6 +8,8 @@ app.use(express.json());
 
 app.use(require("./route/auth"));
 app.use(require("./route/products"))
+app.use(require("./route/shops"))
+app.use(require("./route/attributes"))
 
 const db = mongoose.connection;
 mongoose.connect( config.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true} );

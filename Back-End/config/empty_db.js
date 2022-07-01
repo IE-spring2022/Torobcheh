@@ -18,5 +18,3 @@ Product.deleteMany({}).then(function(){
 }).catch(function(error){
     console.log(error); // Failure
 });
-
-// todo do the same for all entities

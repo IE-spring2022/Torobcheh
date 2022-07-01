@@ -8,7 +8,7 @@ const shopSchema = new Schema({
     },
     seller: {
         type: Schema.Types.ObjectId,
-        ref: "Seller", // todo seller or user?
+        ref: "Seller",
         required: true,
     },
     text: {

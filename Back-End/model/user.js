@@ -16,6 +16,11 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
+    phone: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     favorites: [
         { type: Schema.Types.ObjectId, ref: "Product" }
     ],
