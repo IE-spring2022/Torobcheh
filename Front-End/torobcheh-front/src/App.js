@@ -20,14 +20,14 @@ import './components/styles/AddProduct.css'
 function App() {
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/products" element={<ProductsListPage />} />  
         </Routes>
-      </Router>
-      {/* <AddProduct /> */}
+      </Router> */}
+      <AddProduct />
     </div>
   );
 }
