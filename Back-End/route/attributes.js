@@ -18,7 +18,6 @@ app.post( "/api/attributes", async (req, res) => {
             attribute = new Attribute({ name: name });
             await attribute.save();
             res.status(200).json({attribute, message: "attribute successfully added"} );
-
         } catch (err) {
             console.log(err.message);
             res.status(400).send("Error in Saving");
