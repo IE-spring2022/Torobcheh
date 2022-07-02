@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { login, logout } from "../redux/UserInfo";
+import { login } from "../redux/UserInfo";
 import { useSelector } from "react-redux";
 import { Link, Navigate } from 'react-router-dom';
 import { send_request } from '../send_request';
