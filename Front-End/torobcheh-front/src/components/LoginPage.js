@@ -22,7 +22,7 @@ async function signInUp_handler(method, url, body) {
     if (res[0]) {
         // success
         console.log('loginpage success')
-        return { token: res[1].token, user_type: res[1].user_type }
+        return { token: res[1].token, user_type: res[1].user_type, user_id: res[1].user_id }
     }
     alert(res[1]);
 }
