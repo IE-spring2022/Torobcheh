@@ -5,12 +5,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { send_request } from '../send_request';
 import AddProduct from './AddProduct';
+import AddShop from './AddShop';
 
 function SellerProf(props) {
 
     return(
         <div className='prof_container' id='seller_prof_container'>
             <AddProduct />
+            <AddShop />
             <Link to={'/'}>بازگشت به صفحه اصلی</Link>
         </div>
     );
