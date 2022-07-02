@@ -90,75 +90,52 @@ app.post( "/api/auth/signup/seller", async (req, res) => {
 
 
 
-app.post("/api/auth/login/user",async (req, res) => {//todo remove the verify token from here!
+app.post("/api/auth/login/all",async (req, res) => {//todo remove the verify token from here!
       const { username, password } = req.body;
       try {
         let user = await User.findOne({ username: username });
-        if (!user)
-          return bad_request(res, "user does not exist!");
-        
-        const isMatch = await bcrypt.compare(password, user.password); //todo bonus password encryption!
-        if (!isMatch)
-          return bad_request(res, "wrong password!");
+        let seller = await Seller.findOne({ username: username });
+        let admin = await Admin.findOne({ username: username });
 
-        const payload = calc_payload(user);
-        jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
-            if (err) throw err;
+        if (user) {
+            const isMatch = await bcrypt.compare(password, user.password); //todo bonus password encryption!
+            if (!isMatch) { return bad_request(res, "wrong password!");}
+
+            const payload = calc_payload(user);
+            jwt.sign(payload, config.secret, {expiresIn: 10000}, (err, token) => {
+                if (err) throw err;
                 res.status(200).json({token, message: "successful", user_type: "user"});
+            });
         }
-        );
+        else if (seller) {
+            const isMatch = await bcrypt.compare(password, seller.password); //todo bonus password hashing and encryption!
+            if (!isMatch) { return bad_request(res, "wrong password!"); }
+
+            const payload = calc_payload(seller);
+            jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
+                    if (err) throw err;
+                    res.status(200).json({token, message: "successful", user_type: "seller"});
+                }
+            );
+        }
+        else if (admin) {
+            const isMatch = await bcrypt.compare(password, admin.password);
+            if (!isMatch){ return bad_request(res, "wrong password!");}
+
+            const payload = calc_payload(admin);
+            jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
+                    if (err) throw err;
+                    res.status(200).json({token, message: "successful", user_type: "admin"});
+                }
+            );
+        }
+        else{
+            return bad_request(res, "user does not exist!");
+        }
       } catch (e) {
         console.error(e);
         res.status(500).json({ message: "Server Error" });
       }
-});
-
-
-app.post("/api/auth/login/seller",async (req, res) => {//todo remove the verify token from here!
-    const { username, password } = req.body;
-    try {
-        let seller = await Seller.findOne({ username: username });
-        if (!seller)
-            return bad_request(res, "user does not exist!");
-
-        const isMatch = await bcrypt.compare(password, seller.password); //todo bonus password hashing and encryption!
-        if (!isMatch)
-            return bad_request(res, "wrong password!");
-
-        const payload = calc_payload(seller);
-        jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
-                if (err) throw err;
-                res.status(200).json({token, message: "successful", user_type: "seller"});
-            }
-        );
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ message: "Server Error" });
-    }
-});
-
-
-app.post("/api/auth/login/admin",async (req, res) => {//todo remove the verify token from here!
-    const { username, password } = req.body;
-    try {
-        let admin = await Admin.findOne({ username: username });
-        if (!admin)
-            return bad_request(res, "you are not the admin!");
-
-        const isMatch = await bcrypt.compare(password, admin.password);
-        if (!isMatch)
-            return bad_request(res, "wrong password!");
-
-        const payload = calc_payload(admin);
-        jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
-                if (err) throw err;
-                res.status(200).json({token, message: "successful", user_type: "admin"});
-            }
-        );
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ message: "Server Error" });
-    }
 });
 
 module.exports = app;
