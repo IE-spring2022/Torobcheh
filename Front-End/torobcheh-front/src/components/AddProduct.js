@@ -56,14 +56,15 @@ function AddProduct(props) {
             </div>
             <div id='addprod_form_div'>
                 {/* <form> */}
-                    <input type={'text'} placeholder={'نام کالا'} />
-                    <select>
+                    <input type={'text'} placeholder={'نام فروشگاه'} required />
+                    <input type={'text'} placeholder={'نام کالا'} required />
+                    <select required>
                         <option value={""} selected disabled>دسته بندی</option>
                         <option value={"phone"}>گوشی موبایل</option>
                         <option value={"tablet"}>تبلت</option>
                         <option value={"laptop"}>لپتاپ</option>
                     </select>
-                    <input type={'number'} placeholder={'قیمت'} />
+                    <input type={'number'} placeholder={'قیمت'} required />
                 {/* </form> */}
             </div>
             <div className='sub_title_in_prof'>
