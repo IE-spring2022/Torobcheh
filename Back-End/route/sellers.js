@@ -26,6 +26,38 @@ app.put( "/api/sellers/add_shop", async (req, res) => {
             await shop.save();
             seller.shops.push(shop);
             await seller.save();
+            res.status(200).json({seller} );
+        } catch (err) {
+            console.log(err.message);
+            res.status(400).send("Error in Saving");
+        }
+    }
+);
+
+app.put( "/api/sellers/edit_info", async (req, res) => {
+        const { username, newUsername, newPhone, newEmail } = req.body;
+        let seller = Seller.findOne({email: newEmail})
+        if(!seller)
+            seller = Seller.findOne({username: newUsername})
+        if(seller)
+            return bad_request(res, "seller with overlapping info exists!")
+        let user = User.findOne({username: newUsername})
+        if(user)
+            return bad_request(res, "user with this username exists!")
+
+        try {
+            let seller = await Seller.findOne({ username : username });
+            if (!seller) { return bad_request(res, "seller does not exist!");}
+
+            if(newUsername !== "")
+                seller.username = newUsername
+            if(newPhone !== "")
+                seller.phone = newPhone
+            if(newEmail !== "")
+                seller.email = newEmail
+
+            await seller.save();
+            res.status(200).json({seller} );
         } catch (err) {
             console.log(err.message);
             res.status(400).send("Error in Saving");

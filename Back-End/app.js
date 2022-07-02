@@ -12,6 +12,8 @@ app.use(require("./route/products"))
 app.use(require("./route/shops"))
 app.use(require("./route/attributes"))
 app.use(require("./route/reports"))
+app.use(require("./route/sellers"))
+
 
 const db = mongoose.connection;
 mongoose.connect( config.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true} );
