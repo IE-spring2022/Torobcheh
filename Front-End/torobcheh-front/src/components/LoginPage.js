@@ -5,19 +5,24 @@ import { useSelector } from "react-redux";
 import { Link, Navigate } from 'react-router-dom';
 import { send_request } from '../send_request';
 
-async function signup(method, url, body){
+async function loginpage_button(method, url, body, my_dispatch) {
+    let result = await signInUp_handler(method, url, body);
+    if (result)
+        my_dispatch(login(result))
+}
+async function signInUp_handler(method, url, body) {
     let res;
-    try{
+    try {
         res = await send_request(method, url, body);
-        console.log('res:',res);
+        console.log('res:', res);
     }
-    catch(e){
-       console.log('signup oops ...');
+    catch (e) {
+        console.log('login page: oops ...');
     }
-    if (res[0]){
+    if (res[0]) {
         // success
-        res = res[1];
-        return {token: res.token, user_type: res.user_type}
+        console.log('loginpage success')
+        return { token: res[1].token, user_type: res[1].user_type }
     }
     alert(res[1]);
 }
@@ -29,7 +34,7 @@ function LoginPage(props) {
     const user_info = useSelector((state) => state.UserInfo);
     if (user_info.user_type)
         // already loged in
-        return(<Navigate to="/" />);
+        return (<Navigate to="/" />);
 
     return (
         <div className="LoginPage_container">
@@ -52,15 +57,14 @@ function LoginPage(props) {
                         </div>
                         <div className='loginpage_button_div'>
                             <button type='button'
-                                onClick={async() => my_dispatch(login(await signup("POST", 'auth/signup/'+document.getElementById("signup_type_select").value
-                                    ,JSON.stringify({
+                                onClick={async () => await loginpage_button("POST", 'auth/signup/' + document.getElementById("signup_type_select").value
+                                    , JSON.stringify({
                                         username: document.getElementById("signup_username").value
-                                        ,email: document.getElementById("signup_email").value
-                                        ,password:document.getElementById("signup_password").value
-                                        ,phone:document.getElementById("signup_phone").value
-                                    }))))}
-                                        
-                                id='signup_button'> ثبت نام 
+                                        , email: document.getElementById("signup_email").value
+                                        , password: document.getElementById("signup_password").value
+                                        , phone: document.getElementById("signup_phone").value
+                                    }), my_dispatch)}
+                                id='signup_button'> ثبت نام
                             </button>
                         </div>
                     </form>
@@ -72,16 +76,18 @@ function LoginPage(props) {
                     </div>
                     <form>
                         <div className='loginpage_form'>
-                            <input type={'text'} placeholder={'نام کاربری'} required />
-                            <input type={'password'} placeholder={'رمز عبور'} required />
+                            <input id='login_username' type={'text'} placeholder={'نام کاربری'} required />
+                            <input id='login_password' type={'password'} placeholder={'رمز عبور'} required />
                         </div>
                         <div className='loginpage_button_div'>
-                            <button 
-                                // onClick={() => { my_dispatch(login({token: "abc", user_type: "seller"})); }} 
-                                onClick={() => send_request("POST", 'auth/login/seller', JSON.stringify({username:'user1',password:'pass1'}))}
-                                // onClick={() => send_request("GET", 'attributes')}
-                                id='login_button'> 
-                                ورود 
+                            <button type='button'
+                                onClick={async () => await loginpage_button("POST", 'auth/login/all'
+                                , JSON.stringify({
+                                    username: document.getElementById("login_username").value
+                                    , password: document.getElementById("login_password").value
+                                }), my_dispatch)}
+                                id='login_button'>
+                                ورود
                             </button>
                         </div>
                     </form>
