@@ -20,6 +20,31 @@ app.get( "/api/products", async (req, res) => {
     }
 );
 
+app.get( "/api/product", async (req, res) => {
+        const { id } = req.body; // gets the shop name for shop
+        try{
+            let product = await Product.findById(id)
+            res.status(200).json({product} );
+        } catch (err) {
+            console.log(err.message);
+            res.status(400).send("Error");
+        }
+    }
+);
+
+app.get( "/api/products/filtered", async (req, res) => {
+        const { brand, category, name } = req.body; // gets the shop name for shop
+        try{
+            let products = await Product.find({})
+            res.status(200).json({product} );
+        } catch (err) {
+            console.log(err.message);
+            res.status(400).send("Error");
+        }
+    }
+);
+
+
 app.post( "/api/products", async (req, res) => {
     const { name, category, brand, price, attributes, shop, link, image } = req.body; // gets the shop name for shop
     try {

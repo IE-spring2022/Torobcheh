@@ -39,13 +39,17 @@ app.put( "/api/sellers/add_shop", async (req, res) => {
 app.put( "/api/sellers/edit_info", async (req, res) => {
         const { username, newUsername, newPhone, newEmail } = req.body;
         let seller = Seller.findOne({email: newEmail})
-        if(!seller)
-            seller = Seller.findOne({username: newUsername})
-        if(seller)
-            return bad_request(res, "seller with overlapping info exists!")
+        if (seller)
+            if(newEmail!=="")
+                return bad_request(res, "seller with this email exists!")
+        let seller2 = Seller.findOne({username: newUsername})
+        if(seller2)
+            if(newUsername!=="")
+                return bad_request(res, "seller with this username exists!")
         let user = User.findOne({username: newUsername})
         if(user)
-            return bad_request(res, "user with this username exists!")
+            if(newUsername!=="")
+                return bad_request(res, "user with this username exists!")
 
         try {
             let seller = await Seller.findOne({ username : username });
