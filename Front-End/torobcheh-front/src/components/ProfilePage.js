@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 // import { Link } from 'react-router-dom';
 // import { send_request } from '../send_request';
 import SellerProf from './SellerProf';
+import AdminProf from './AdminProf';
 
 function ProfilePage(props) {
 
@@ -15,6 +16,6 @@ function ProfilePage(props) {
     else if((user_info.user_type === "seller"))
         return <SellerProf />
     else if(user_info.user_type === "admin")
-        return
+        return <AdminProf />
 }
 export default ProfilePage;

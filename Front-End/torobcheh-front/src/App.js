@@ -18,6 +18,7 @@ import './components/styles/price_filter_slider.css'
 import './components/styles/AddProduct.css'
 import './components/styles/ProfilePage.css'
 import './components/styles/SellerProf.css'
+import './components/styles/AdminProf.css'
 
 function App() {
   return (
