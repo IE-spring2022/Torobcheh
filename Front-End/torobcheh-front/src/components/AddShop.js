@@ -19,6 +19,7 @@ async function addshop_handler(method, url, body) {
     if (res[0]) {
         // success
         console.log('add shop success')
+        alert('added successfully');
     }
     else
         alert(res[1]);
