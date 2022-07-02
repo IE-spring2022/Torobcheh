@@ -45,7 +45,8 @@ function LoginPage(props) {
                     <div className='loginpage_button_div'>
                         <button 
                             // onClick={() => { my_dispatch(login({token: "abc", user_type: "seller"})); }} 
-                            onClick={() => send_request("POST", 'auth/login/seller', 'username=user1&password=pass1')}
+                            onClick={() => send_request("POST", 'auth/login/seller', JSON.stringify({username:'user1',password:'pass1'}))}
+                            // onClick={() => send_request("GET", 'attributes')}
                             id='login_button'> 
                             ورود 
                         </button>

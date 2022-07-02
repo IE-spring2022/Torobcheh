@@ -1,4 +1,4 @@
-export function send_request(method, end_point, params=null) {
+export function send_request(method, end_point, body=null) {
     let xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange", () => {
         if (xhttp.readyState === 4) {
@@ -9,14 +9,16 @@ export function send_request(method, end_point, params=null) {
                 return data;
             } else {
                 // request failed
-                console.log("error getting data")
+                console.log("error getting data:")
+                console.log(xhttp.responseText)
             }
         }
     });
     console.log('--');
     xhttp.open(method, "http://localhost:3000/api/" + end_point);
-    if (params)
-        xhttp.send(params);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    if (body)
+        xhttp.send(body);
     else
         xhttp.send();
 }
