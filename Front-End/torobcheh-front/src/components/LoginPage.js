@@ -34,7 +34,7 @@ function LoginPage(props) {
     const user_info = useSelector((state) => state.UserInfo);
     if (user_info.user_type)
         // already loged in
-        return (<Navigate to="/" />);
+        return (<Navigate to="/profile" />);
 
     return (
         <div className="LoginPage_container">

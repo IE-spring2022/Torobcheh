@@ -86,7 +86,7 @@ function AddProduct(props) {
             </div>
             <div className='sub_title_in_prof'>
                 کالاهای موجود
-                <ProductBriefCardContainer show_headers={false} />
+                <ProductBriefCardContainer show_headers={false} noLike={true} />
             </div>
         </div>
     );

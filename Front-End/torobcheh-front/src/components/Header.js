@@ -11,7 +11,7 @@ function Header(props) {
     if (user_info.user_type)
         //loged in
         account_stuff = <div className='profile'>
-            <Link style={{ all: "unset", cursor: "pointer" }} to={`/`}> پروفایل </Link>
+            <Link style={{ all: "unset", cursor: "pointer" }} to={`/profile`}> پروفایل </Link>
         </div>
     else
         account_stuff = <div className='login_signup_button_div'>

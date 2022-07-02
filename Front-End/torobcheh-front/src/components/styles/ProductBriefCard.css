@@ -11,6 +11,8 @@
 
     padding: 5px;
     margin: 10px;
+
+    direction: rtl;
 }
 
 .ProductBriefCard div{
@@ -38,10 +40,12 @@
 
 .ProductBriefCard_price_div{
     font-weight: 500;
+    direction: rtl;
 }
 
 .ProductBriefCard_shopsNum_div{
     font-weight: 300;
+    direction: rtl;
 }
 
 .ProductBriefCard_like_div{
