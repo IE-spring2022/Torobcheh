@@ -47,7 +47,7 @@ app.post( "/api/auth/signup/user", async (req, res) => {
             const payload = calc_payload(user);
             jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                     if (err) throw err;
-                res.status(200).json({token, message: "successful signup", user_type: "user"});
+                res.status(200).json({token, message: "successful signup", user_type: "user", user_id: user._id});
                 }
             );
         } catch (err) {
@@ -76,7 +76,7 @@ app.post( "/api/auth/signup/seller", async (req, res) => {
             const payload = calc_payload(seller);
             jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                     if (err) throw err;
-                    res.status(200).json({token, message: "successful signup", user_type: "seller"});
+                    res.status(200).json({token, message: "successful signup", user_type: "seller", user_id: seller._id});
                 }
             );
         } catch (err) {
@@ -104,7 +104,7 @@ app.post("/api/auth/login/all",async (req, res) => {//todo remove the verify tok
             const payload = calc_payload(user);
             jwt.sign(payload, config.secret, {expiresIn: 10000}, (err, token) => {
                 if (err) throw err;
-                res.status(200).json({token, message: "successful", user_type: "user"});
+                res.status(200).json({token, message: "successful", user_type: "user", user_id: user._id});
             });
         }
         else if (seller) {
@@ -114,7 +114,7 @@ app.post("/api/auth/login/all",async (req, res) => {//todo remove the verify tok
             const payload = calc_payload(seller);
             jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                     if (err) throw err;
-                    res.status(200).json({token, message: "successful", user_type: "seller"});
+                    res.status(200).json({token, message: "successful", user_type: "seller", user_id: seller._id});
                 }
             );
         }
@@ -125,7 +125,7 @@ app.post("/api/auth/login/all",async (req, res) => {//todo remove the verify tok
             const payload = calc_payload(admin);
             jwt.sign( payload, config.secret , { expiresIn: 10000 }, (err, token) => {
                     if (err) throw err;
-                    res.status(200).json({token, message: "successful", user_type: "admin"});
+                    res.status(200).json({token, message: "successful", user_type: "admin", user_id: admin._id});
                 }
             );
         }

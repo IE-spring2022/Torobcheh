@@ -35,8 +35,10 @@ app.get( "/api/product", async (req, res) => {
 app.get( "/api/products/filtered", async (req, res) => {
         const { brand, category, name } = req.body; // gets the shop name for shop
         try{
-            let products = await Product.find({})
-            res.status(200).json({product} );
+            // let prod = await Product.findOne({})
+            // console.log(prod._id)
+            let products = await Product.find({brand: "", category: "", name: "name1"})
+            res.status(200).json({products} );
         } catch (err) {
             console.log(err.message);
             res.status(400).send("Error");
