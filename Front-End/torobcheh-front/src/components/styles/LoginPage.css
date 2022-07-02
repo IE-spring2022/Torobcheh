@@ -28,9 +28,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.LoginPage_main_card_section form{
+    width: 70%;
+    /* border: 1px solid; */
+    padding:0px auto;
 
-    /* padding-left: 50px;
-    padding-right: 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #login_div{
@@ -46,11 +52,11 @@
     font-size: 26px;
     font-weight: 600;
 
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .loginpage_form{
-    padding-right: 30px;
+    /* padding-right: 30px; */
 }
 .loginpage_form select{
     display: block;
