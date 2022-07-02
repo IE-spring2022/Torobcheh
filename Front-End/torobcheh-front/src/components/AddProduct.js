@@ -28,7 +28,7 @@ function AddProduct(props) {
 
     let atributes_str = ["atr1", 'atr2', 'atr3', 'atr4'];
     let atributes = [];
-    for (var i = 0; i < atributes_str.length; i++) {
+    for (let i = 0; i < atributes_str.length; i++) {
         atributes.push(
             <label key={i} className='atr_show_div'>
                 <input name="atr_checkbox" type="checkbox" id={atributes_str[i]} value={atributes_str[i]} />
@@ -39,7 +39,7 @@ function AddProduct(props) {
 
     let brands_str = ["brand1", 'brand2', 'brand3', 'brand4'];
     let brands = [];
-    for (var i = 0; i < brands_str.length; i++) {
+    for (let i = 0; i < brands_str.length; i++) {
         brands.push(
             <label key={i} className='atr_show_div'>
                 <input name="brand_radio" type="radio" id={brands_str[i]} value={brands_str[i]} />

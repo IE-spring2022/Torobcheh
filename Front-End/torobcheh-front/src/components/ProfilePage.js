@@ -10,11 +10,11 @@ function ProfilePage(props) {
 
     const user_info = useSelector((state) => state.UserInfo);
 
-    if(user_info.user_type == "user")
+    if(user_info.user_type === "user")
         return 
-    else if((user_info.user_type == "seller"))
+    else if((user_info.user_type === "seller"))
         return <SellerProf />
-    else if(user_info.user_type == "admin")
+    else if(user_info.user_type === "admin")
         return
 }
 export default ProfilePage;
