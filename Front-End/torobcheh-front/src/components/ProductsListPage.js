@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 
 import Header from './Header';
 import ProductBriefCardContainer from './ProductBriefCardContainer';
@@ -6,6 +7,14 @@ import DropDownBrands from './DropDownBrands';
 
 
 function ProductsListPage(props) {
+
+    let noLike;
+    const user_info = useSelector((state) => state.UserInfo);
+    if (user_info.user_type)
+        //loged in
+        noLike = false;
+    else
+        noLike = true;
 
     // TODO
     let mobile_brands = ['سامسونگ', 'شیائومی', 'اپل'];
@@ -16,7 +25,7 @@ function ProductsListPage(props) {
         <div className="ProductsListPage_container">
             <Header />
             <div className='ProductsListPage_partition'>
-                <ProductBriefCardContainer show_headers={true} />
+                <ProductBriefCardContainer noLike={noLike} show_headers={true} />
                 <div className='ProductsListPage_filters_div'>
                     <DropDownBrands category={'گوشی موبایل'} brands_list={mobile_brands} />
                     <DropDownBrands category={'تبلت'} brands_list={tablet_brands} />
