@@ -22,13 +22,13 @@ export const UserInfo = createSlice({
         },
         set_query: (state = {}, action) => {
             return {
-                ... state,
+                ...state,
                 search_query: action.payload.query
             }
         },
         reset_query: (state = {}) => {
             return {
-                ... state,
+                ...state,
                 search_query: null
             }
         }
