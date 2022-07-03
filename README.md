@@ -50,6 +50,8 @@ Here is the project structure:
 
 ### 2.1. Frontend
 
+We have used [Redux](https://redux.js.org/) and [React router](https://reactrouter.com/) in frontend.
+
 #### main page:
 
 <img src="readme_images/main.PNG" alt="image" width="900"/>
