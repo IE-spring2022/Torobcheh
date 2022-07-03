@@ -41,11 +41,12 @@ function AddShop(props) {
             </div>
             <div className='add_shop_button_div'>
                 <button type='button'
+                    // onClick={async () => await addshop_handler("POST", 'sellers/add_shop'
                     onClick={async () => await addshop_handler("POST", 'shops'
                         , JSON.stringify({
                             name: document.getElementById("shop_name").value
-                            , text: document.getElementById("shop_desc").value
                             , seller: user_info.user_id
+                            , text: document.getElementById("shop_desc").value
                         }))}
                     id='addshop_button'>
                     افزودن
