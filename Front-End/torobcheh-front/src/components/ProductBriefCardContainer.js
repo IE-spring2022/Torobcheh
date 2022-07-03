@@ -11,7 +11,7 @@ class ProductBriefCardContainer extends React.Component {
         let sub_category = 'اپل'
 
         for (var i = 0; i < products_data.length; i++) {
-            cardComponents.push(<ProductBriefCard key={i} noLike={this.props.noLike} img={products_data.image} price={products_data.price} shopsNum={products_data.shop} />);
+            cardComponents.push(<ProductBriefCard key={i} noLike={this.props.noLike} img={products_data.image} name={products_data.name} price={products_data.price} shop={products_data.shop} />);
         }
 
         if (this.props.show_headers)

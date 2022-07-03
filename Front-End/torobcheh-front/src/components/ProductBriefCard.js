@@ -10,14 +10,14 @@ function ProductBriefCard(props) {
                 <img src={props.img} alt={"cannot load"} />
             </div>
             <div className='ProductBriefCard_title_div'>
-                نام کالا
+                {props.name}
                 {/* <Link style={{ all: "unset", cursor: "pointer" }} to={`/${props.cardData.id}`}>{props.cardData.title} </Link> */}
             </div>
             <div className='ProductBriefCard_price_div'>
-                {`تومان ${props.price} از`}
+                {`تومان ${props.price}`}
             </div>
             <div className='ProductBriefCard_shopsNum_div'>
-                {`فروشگاه ${props.shopsNum} در`}
+                {`${props.shop} در فروشگاه`}
             </div>
         </div>
     );

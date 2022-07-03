@@ -48,6 +48,39 @@ function AddProduct(props) {
         );
     }
 
+    let products = [
+        {
+            image: null,
+            name: 'prod1',
+            price: 1000,
+            shop: 'shop1'
+        },
+        {
+            image: null,
+            name: 'prod2',
+            price: 10000,
+            shop: 'shop2'
+        },
+        {
+            image: null,
+            name: 'prod3',
+            price: 100000,
+            shop: 'shop3'
+        },
+        {
+            image: null,
+            name: 'Redmi note 10',
+            price: 6000000,
+            shop: 'red shop'
+        },
+        {
+            image: null,
+            name: 'Samsung A50',
+            price: 1000,
+            shop: 'sam shop'
+        }
+    ];
+
     return (
         <div className="AddProduct_container">
             <div className='title_in_prof'>
@@ -87,7 +120,7 @@ function AddProduct(props) {
             </div>
             <div className='sub_title_in_prof'>
                 کالاهای موجود
-                <ProductBriefCardContainer show_headers={false} noLike={true} />
+                <ProductBriefCardContainer products_data={products} show_headers={false} noLike={true} />
             </div>
         </div>
     );

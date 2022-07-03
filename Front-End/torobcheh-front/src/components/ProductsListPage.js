@@ -29,38 +29,72 @@ async function search_handler(method, url, body) {
 
 function ProductsListPage(props) {
 
-    const my_dispatch = useDispatch();
+    // const my_dispatch = useDispatch();
 
     const user_info = useSelector((state) => state.UserInfo);
-    let query = user_info.search_query;
-    const [products, setProducts] = useState();
-    if (user_info.search_query) {
-        console.log('have query')
-        let res = search_handler("GET", 'products/filtered'
-            , JSON.stringify({
-                name: query,
-                brand: "",
-                category: ""
-            }));
+    // let query = user_info.search_query;
+    // const [products, setProducts] = useState();
+    // if (user_info.search_query) {
+    //     console.log('have query')
+    //     let res = search_handler("GET", 'products/filtered'
+    //         , JSON.stringify({
+    //             name: query,
+    //             brand: "",
+    //             category: ""
+    //         }));
 
-        if (res) {
-            setProducts(res[1])
-        }
-        my_dispatch(reset_query());
-    }
-    else if (!products) {
-        console.log('no query')
-        let res = search_handler("GET", 'products/filtered'
-            , JSON.stringify({
-                name: "",
-                brand: "",
-                category: ""
-            }));
-        if (res) {
-            setProducts(res[1])
-        }
-    }
+    //     if (res) {
+    //         setProducts(res[1])
+    //     }
+    //     my_dispatch(reset_query());
+    // }
+    // else if (!products) {
+    //     console.log('no query')
+    //     let res = search_handler("GET", 'products/filtered'
+    //         , JSON.stringify({
+    //             name: "",
+    //             brand: "",
+    //             category: ""
+    //         }));
+    //     if (res) {
+    //         setProducts(res[1])
+    //     }
+    // }
 
+
+    // TODO:
+    let products = [
+        {
+            image: null,
+            name: 'prod1',
+            price: 1000,
+            shop: 'shop1'
+        },
+        {
+            image: null,
+            name: 'prod2',
+            price: 10000,
+            shop: 'shop2'
+        },
+        {
+            image: null,
+            name: 'prod3',
+            price: 100000,
+            shop: 'shop3'
+        },
+        {
+            image: null,
+            name: 'Redmi note 10',
+            price: 6000000,
+            shop: 'red shop'
+        },
+        {
+            image: null,
+            name: 'Samsung A50',
+            price: 1000,
+            shop: 'sam shop'
+        }
+    ];
 
     let noLike;
     if (user_info.user_type)
