@@ -1,0 +1,47 @@
+.Header_container{
+    height: 70px;
+    width: 100%;
+
+    background-color: rgb(230, 230, 230);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login_signup_button_div, .profile{
+    margin-left: 30px;
+    padding: 4px;
+
+    border-radius: 6px;
+
+    border: 1px solid;
+    background-color:rgb(250, 250, 250);
+}
+.login_signup_button_div:hover, .profile:hover{
+    cursor: pointer;
+    background-color:rgb(234, 234, 234);
+}
+
+.category_container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-right: 30px;
+}
+.category_button_div{
+    margin-left: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    height: 70%;
+    line-height: 100%;
+    text-align: center;
+}
+.category_button_div:hover{
+    /* border-bottom: 1px solid; */
+    cursor: default;
+    font-weight: 600;
+}

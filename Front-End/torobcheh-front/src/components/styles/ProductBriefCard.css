@@ -1,0 +1,58 @@
+.ProductBriefCard{
+    width:210px;
+    height: 310px;
+    
+    border: 1px solid;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* flex-wrap: initial; */
+
+    padding: 5px;
+    margin: 10px;
+
+    direction: rtl;
+}
+
+.ProductBriefCard div{
+    /* border: 1px solid; */
+    
+    text-align: center;
+    margin: 2px;
+
+    max-width: 210px;
+    word-wrap: break-word;
+}
+
+.ProductBriefCard_img_div{
+    height: 200px;
+    width: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProductBriefCard_title_div{
+    font-weight: 700;
+}
+
+.ProductBriefCard_price_div{
+    font-weight: 500;
+    direction: rtl;
+}
+
+.ProductBriefCard_shopsNum_div{
+    font-weight: 300;
+    direction: rtl;
+}
+
+.ProductBriefCard_like_div{
+    padding: 0px auto;
+    font-weight: 200;
+}
+.ProductBriefCard_like_div button{
+    cursor: pointer;
+}
