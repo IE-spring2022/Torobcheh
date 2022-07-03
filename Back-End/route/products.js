@@ -112,12 +112,13 @@ app.put( "/api/products/add_favorite", async (req, res) => {
         try {
             let user = await User.findById(user_id);
             if (!user) { return bad_request(res, "username does not exist!");}
-
-            if(!user.favorites.includes(product))
-                user.favorites.push(product);
+            user.favorites = []; //todo REMOVE!!!!!!!!!!
+            // let productObjId = Product.findById(product)
+            // if(!user.favorites.includes(productObjId))
+            //     user.favorites.push(productObjId);
 
             await user.save();
-            res.status(200).json( user.favorites );
+            res.status(200).json({user} );
 
         } catch (err) {
             console.log(err.message);

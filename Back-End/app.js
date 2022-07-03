@@ -13,6 +13,7 @@ app.use(require("./route/shops"))
 app.use(require("./route/attributes"))
 app.use(require("./route/reports"))
 app.use(require("./route/sellers"))
+app.use(require("./route/users"))
 
 
 const db = mongoose.connection;

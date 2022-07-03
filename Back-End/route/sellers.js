@@ -20,9 +20,10 @@ app.put( "/api/sellers/add_shop", async (req, res) => {
         try {
             let shop = await Shop.findOne({ name : name });
             if (shop) {
-                console.log(shop)
+                // console.log(shop)
                 return bad_request(res, "a shop with this name already exists!");}
 
+            // console.log("seller: ", seller)
             let sellerObjId = await Seller.findById(seller);
             if (!sellerObjId) { return bad_request(res, "seller does not exist!");}
 
@@ -30,7 +31,7 @@ app.put( "/api/sellers/add_shop", async (req, res) => {
             await shop.save();
             sellerObjId.shops.push(shop);
             await sellerObjId.save();
-            res.status(200).json(shop);
+            res.status(200).json({message: "added"});
         } catch (err) {
             console.log(err.message);
             res.status(400).send("Error in Saving");
