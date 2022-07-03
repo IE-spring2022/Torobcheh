@@ -29,12 +29,15 @@ Here is the project structure:
        |----- Front-End/torobcheh-front/src
                    |--- public
                    |--- src
-                          |--- components (react components)
-                          |--- redux (a local data store)
-                          |--- App.js (main file)
-                          |--- index.js
-                          |--- send_request.js (connection to server)
-                          |--- setupProxy.js (for when client and server are running on the same host)
+                   |      |--- components (react components)
+                   |      |        |--- styles (contains css styles)  
+                   |      | 
+                   |      |--- redux (a local data store)
+                   |      |--- App.js (main file)
+                   |      |--- index.js
+                   |      |--- send_request.js (connection to server)
+                   |      |--- setupProxy.js (for when client and server are running on the same host)
+                   |       
                    |--- package.json
                    |--- package-lock.json
        
