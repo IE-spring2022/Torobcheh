@@ -35,6 +35,6 @@ export const UserInfo = createSlice({
     },
 });
 
-export const { login, logout } = UserInfo.actions;
+export const { login, logout, set_query, reset_query } = UserInfo.actions;
 
 export default UserInfo.reducer;
