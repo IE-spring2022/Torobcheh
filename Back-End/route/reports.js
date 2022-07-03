@@ -28,29 +28,30 @@ app.post( "/api/reports", async (req, res) => {
 );
 
 app.get("/api/reports/seller", async (req, res) => {
-        const { username } = req.body; //seller username
+        const { seller_id } = req.body; //seller username
         try {
-            let seller = await Seller.findOne({ username : username });
+            let seller = await Seller.findById(seller_id);
             if (!seller) { return bad_request(res, "seller does not exist");}
 
             // get all the shops of that seller -> then get all the products attached to that shop
             // -> return all the reports of those products
             let shops = seller.shops
             let products = []
-            for (const shop of shops) {
-                let productsOfShop = await Product.find({ shop: shop });
-                for (const productOfShop of productsOfShop){
-                    products.push(productOfShop)
-                }
-            }
-            let reports = []
-            for (const product in products){
-                let reportsOfProd = await Report.find({product: product})
-                for (const reportOfProd of reportsOfProd){
-                    reports.push(reportOfProd)
+            for (let i = 0; i <shops.length; i++) {
+                let productsOfShop = await Product.find({ shop: shops[i] });
+                for (let j = 0; j <productsOfShop.length; j++) {
+                    products.push(productsOfShop[j])
                 }
             }
 
+            let reports = []
+            for (let i = 0; i <products.length; i++) {
+                let reportsOfProd = await Report.find({product: products[i]});
+                for (let j = 0; j <reportsOfProd.length; j++) {
+                    products.push(reportsOfProd[j])
+                }
+            }
+            
             res.status(200).json({reports} );
 
         } catch (err) {
