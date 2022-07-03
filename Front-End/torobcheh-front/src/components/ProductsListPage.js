@@ -1,15 +1,68 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from 'react';
+import { reset_query } from "../redux/UserInfo";
 
 import Header from './Header';
 import ProductBriefCardContainer from './ProductBriefCardContainer';
 import DropDownBrands from './DropDownBrands';
+import { send_request } from '../send_request';
 
+async function search_handler(method, url, body) {
+
+    let res;
+    try {
+        res = await send_request(method, url, body);
+        console.log('res:', res);
+    }
+    catch (e) {
+        console.log('prod page search: oops ...');
+    }
+    if (res[0]) {
+        // success
+        console.log('prod page search success:', res[1])
+        return res[1]
+    }
+    else
+        alert(res[1]);
+}
 
 function ProductsListPage(props) {
 
-    let noLike;
+    const my_dispatch = useDispatch();
+
     const user_info = useSelector((state) => state.UserInfo);
+    let query = user_info.search_query;
+    const [products, setProducts] = useState();
+    if (user_info.search_query) {
+        console.log('have query')
+        let res = search_handler("GET", 'products/filtered'
+            , JSON.stringify({
+                name: query,
+                brand: "",
+                category: ""
+            }));
+
+        if (res) {
+            setProducts(res[1])
+        }
+        my_dispatch(reset_query());
+    }
+    else if (!products) {
+        console.log('no query')
+        let res = search_handler("GET", 'products/filtered'
+            , JSON.stringify({
+                name: "",
+                brand: "",
+                category: ""
+            }));
+        if (res) {
+            setProducts(res[1])
+        }
+    }
+
+
+    let noLike;
     if (user_info.user_type)
         //loged in
         noLike = false;
@@ -25,7 +78,7 @@ function ProductsListPage(props) {
         <div className="ProductsListPage_container">
             <Header />
             <div className='ProductsListPage_partition'>
-                <ProductBriefCardContainer noLike={noLike} show_headers={true} />
+                <ProductBriefCardContainer products_data={products} noLike={noLike} show_headers={true} />
                 <div className='ProductsListPage_filters_div'>
                     <DropDownBrands category={'گوشی موبایل'} brands_list={mobile_brands} />
                     <DropDownBrands category={'تبلت'} brands_list={tablet_brands} />

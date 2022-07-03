@@ -32,11 +32,11 @@ function ProductBriefCard(props) {
                 {/* <Link style={{ all: "unset", cursor: "pointer" }} to={`/${props.cardData.id}`}>{props.cardData.title} </Link> */}
             </div>
             <div className='ProductBriefCard_price_div'>
-                {`تومان ${props.price} از`}
+                {`تومان ${props.price}`}
             </div>
-            <div className='ProductBriefCard_shopsNum_div'>
+            {/* <div className='ProductBriefCard_shopsNum_div'>
                 {`فروشگاه ${props.shopsNum} در`}
-            </div>
+            </div> */}
             <div className='ProductBriefCard_like_div'>
                 {/* <img src={'./like_icon.jpg'} /> */}
                 <button> افزودن به علاقمندی ها </button>
