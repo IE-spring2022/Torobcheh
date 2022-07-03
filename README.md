@@ -50,9 +50,9 @@ Here is the project structure:
 
 ### 2.1. Frontend
 
-todo
+#### main page:
 
-
+![image](docs/readme_images/main.PNG)
 
 ### 2.2. Backend
 
