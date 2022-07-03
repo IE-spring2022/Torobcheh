@@ -35,9 +35,44 @@ app.get( "/api/product", async (req, res) => {
 app.get( "/api/products/filtered", async (req, res) => {
         const { brand, category, name } = req.body; // gets the shop name for shop
         try{
-            // let prod = await Product.findOne({})
-            // console.log(prod._id)
-            let products = await Product.find({brand: "", category: "", name: "name1"})
+            let products;
+            if(brand === ""){
+                if(category === ""){
+                    if(name === "") {
+                        products = await Product.find({})
+                    }
+                    else{
+                        products = await Product.find({name: name})
+                    }
+                }
+                else{
+                    if(name === "") {
+                        products = await Product.find({category: category})
+                    }
+                    else{
+                        products = await Product.find({category: category, name: name})
+                    }
+                }
+            }
+            else{
+                if(category === ""){
+                    if(name === "") {
+                        products = await Product.find({brand: brand})
+                    }
+                    else{
+                        products = await Product.find({brand: brand, name: name})
+                    }
+                }
+                else{
+                    if(name === "") {
+                        products = await Product.find({brand: brand, category: category})
+                    }
+                    else{
+                        products = await Product.find({brand: brand, category: category, name: name})
+                    }
+                }
+            }
+            // products = await Product.find({brand: brand, category: category, name: name})
             res.status(200).json({products} );
         } catch (err) {
             console.log(err.message);
