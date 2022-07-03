@@ -40,30 +40,26 @@ app.put( "/api/sellers/add_shop", async (req, res) => {
 );
 
 app.put( "/api/sellers/edit_info", async (req, res) => {
-        const { username, newUsername, newPhone, newEmail } = req.body;
-        let seller = Seller.findOne({email: newEmail})
-        if (seller)
-            if(newEmail!=="")
-                return bad_request(res, "seller with this email exists!")
-        let seller2 = Seller.findOne({username: newUsername})
-        if(seller2)
-            if(newUsername!=="")
-                return bad_request(res, "seller with this username exists!")
-        let user = User.findOne({username: newUsername})
-        if(user)
-            if(newUsername!=="")
-                return bad_request(res, "user with this username exists!")
+        const { seller_id, newUsername, newPhone, newEmail } = req.body;
 
         try {
-            let seller = await Seller.findOne({ username : username });
-            if (!seller) { return bad_request(res, "seller does not exist!");}
-
-            if(newUsername !== "")
+            let seller = await Seller.findById(seller_id);
+            if(newUsername !== "" && newUsername !== null){
+                let seller1 = await Seller.findOne({username: newUsername})
+                let seller2 = await User.findOne({username: newUsername})
+                if (seller1 || seller2){return bad_request(res, "user/seller with this username exists!")}
                 seller.username = newUsername
-            if(newPhone !== "")
+            }
+            if(newPhone !== "" && newPhone !== null){
+                let seller1 = await Seller.findOne({phone: newPhone})
+                if (seller1){return bad_request(res, "seller with this phone exists!")}
                 seller.phone = newPhone
-            if(newEmail !== "")
+            }
+            if(newEmail !== "" && newEmail !== null){
+                let seller1 = await Seller.findOne({email: newEmail})
+                if (seller1){return bad_request(res, "seller with this email exists!")}
                 seller.email = newEmail
+            }
 
             await seller.save();
             res.status(200).json({seller} );
