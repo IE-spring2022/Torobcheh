@@ -52,7 +52,31 @@ Here is the project structure:
 
 #### main page:
 
-![image](docs/readme_images/main.PNG)
+<img src="readme_images/main.PNG" alt="image" width="900"/>
+
+#### main page (after login):
+
+<img src="readme_images/main_in.PNG" alt="image" width="900"/>
+
+#### login page:
+
+<img src="readme_images/login.PNG" alt="image" width="900"/>
+
+#### vendor profile page:
+
+<img src="readme_images/seller.PNG" alt="image" width="900"/>
+
+----------- cont. ------------
+
+<img src="readme_images/seller2.PNG" alt="image" width="900"/>
+
+#### admin profile page:
+
+<img src="readme_images/admin.png" alt="image" width="900"/>
+
+#### products list page:
+
+<img src="readme_images/prods.PNG" alt="image" width="900"/>
 
 ### 2.2. Backend
 
