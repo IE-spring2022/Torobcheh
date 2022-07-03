@@ -19,16 +19,18 @@ app.put( "/api/sellers/add_shop", async (req, res) => {
         const { name, seller, text } = req.body;
         try {
             let shop = await Shop.findOne({ name : name });
-            if (shop) { return bad_request(res, "a shop with this name already exists!");}
+            if (shop) {
+                console.log(shop)
+                return bad_request(res, "a shop with this name already exists!");}
 
-            let sellerObjId = await Seller.findOne({ seller : seller });
-            if (!seller) { return bad_request(res, "seller does not exist!");}
+            let sellerObjId = await Seller.findById(seller);
+            if (!sellerObjId) { return bad_request(res, "seller does not exist!");}
 
-            shop = new Shop({ name: name, seller: sellerObjId, test: text });
+            shop = new Shop({ name: name, seller: sellerObjId, text: text });
             await shop.save();
-            seller.shops.push(shop);
-            await seller.save();
-            res.status(200).json({seller} );
+            sellerObjId.shops.push(shop);
+            await sellerObjId.save();
+            res.status(200).json(shop);
         } catch (err) {
             console.log(err.message);
             res.status(400).send("Error in Saving");
