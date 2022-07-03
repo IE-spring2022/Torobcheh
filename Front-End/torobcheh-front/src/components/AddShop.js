@@ -41,8 +41,7 @@ function AddShop(props) {
             </div>
             <div className='add_shop_button_div'>
                 <button type='button'
-                    // onClick={async () => await addshop_handler("POST", 'sellers/add_shop'
-                    onClick={async () => await addshop_handler("POST", 'shops'
+                    onClick={async () => await addshop_handler("PUT", 'sellers/add_shop'
                         , JSON.stringify({
                             name: document.getElementById("shop_name").value
                             , seller: user_info.user_id
