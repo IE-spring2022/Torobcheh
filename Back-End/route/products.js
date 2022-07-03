@@ -108,17 +108,16 @@ app.post( "/api/products", async (req, res) => {
 );
 
 app.put( "/api/products/add_favorite", async (req, res) => {
-        const { username, product } = req.body; // gets the shop name for shop
+        const { user_id, product } = req.body; // gets the shop name for shop
         try {
-            //todo user.favorites.push(product)
-
-            let user = await User.findOne({ username : username });
+            let user = await User.findById(user_id);
             if (!user) { return bad_request(res, "username does not exist!");}
 
-            user.favorites.push(product); //todo check this!
+            if(!user.favorites.includes(product))
+                user.favorites.push(product);
 
             await user.save();
-            res.status(200).json({user, message: "favorite successfully added"} );
+            res.status(200).json( user.favorites );
 
         } catch (err) {
             console.log(err.message);
